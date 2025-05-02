@@ -16,13 +16,19 @@ using namespace std;
 
 int main(int argc, char** argv) {
 
-
+// stereo parameters
 int fps = 10; // in frames per sec
 int frameDelay = 1000/(10*fps); // in millisec 
-double maxDistance = 5000.0; // mm
+double maxDistance = 1000.0; // mm
+double maxDisparity = 64;
 int rows  = 480;
 int cols  = 640;
 Mat depthImage = Mat::zeros(rows,cols, CV_8UC1);
+
+//obstacle parameters 1:07:44
+Mat obstacleImage = Mat::zeros(rows, cols, CV_8UCI);
+int leftZone = cols/3;
+int rightZone  2*cols/3;
 
 
 clock_t start;
@@ -129,6 +135,9 @@ float offset = 60.0;
 
 
 
+
+      //add call to stereoObstacles()
+/*
 	// build obstacle map
 	Mat obstacles;
 	obstacles = medianFiltered;
@@ -145,7 +154,9 @@ float offset = 60.0;
 	 }
 	imshow("obstacles", obstacles);	
 	// end obstacle map
-	
+
+
+
 	//detection
 	int left_window = cols/3;
 	int center_window = 2*cols/3;
@@ -168,7 +179,7 @@ float offset = 60.0;
 	
 	// STEER COMMANDS GO HERE
 
-
+*/
 
       // pause
       char key = waitKey(frameDelay);
